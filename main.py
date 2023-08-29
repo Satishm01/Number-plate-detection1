@@ -7,17 +7,10 @@ pytesseract.pytesseract.tesseract_cmd=r"C:\Program Files\Tesseract-OCR\tesseract
 
 #Capturing number plate of vehicle.use quality camera more accurate
 vid=cv2.VideoCapture(0)
-while(True):
-    ret,image=vid.read()
-    cv2.imshow('image',image)
-    if cv2.waitKey(1) & 0xFF == ord('q'):     # press 'q' to capturing photo
-        break
-    cv2.imwrite('CarPictures/car.jpg',image)  #it is save in this location
-vid.release()
-cv2.destroyAllWindows()
+
 
 #now to read image file
-image=cv2.imread('CarPictures/car.jpg')
+image=cv2.imread('CarPictures\car.jpg')
 #we will resize and standardise our image to 500
 image=imutils.resize(image,width=500)
 #we will display original image when it will start finding
@@ -114,7 +107,7 @@ def check_if_string_in_file(file_name, string_to_search):
 #Produce beep sound for registered vehicle captured by camera and print
 frequency = 2500
 duration = 1200
-if check_if_string_in_file('./Database/Database.txt', text) and text != "":
+if check_if_string_in_file('Database\Database.txt', text) and text != "":
     print('Registered')
     winsound.Beep(frequency, duration)
 else:
